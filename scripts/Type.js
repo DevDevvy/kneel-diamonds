@@ -26,6 +26,8 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "type") {
             setType(parseInt(event.target.value))
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+            
         }
     }
 )

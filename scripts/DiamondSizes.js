@@ -34,6 +34,7 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "size") {
             setSize(parseInt(event.target.value))
+            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 )

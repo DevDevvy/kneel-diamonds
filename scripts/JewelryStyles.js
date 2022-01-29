@@ -33,6 +33,7 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "style") {
             setStyle(parseInt(event.target.value))
+            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 )
