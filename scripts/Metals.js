@@ -1,21 +1,21 @@
-import { getMetals, setMetal } from "./database.js"
-
+import { getCustomOrder, getMetals, setMetal } from "./database.js"
+const order = getCustomOrder()
 const metals = getMetals()
 
 
-export const Metals = () => {
-    let html = "<ul>"
+// export const Metals = () => {
+//     let html = "<ul>"
     
-    // This is how you have been converting objects to <li> elements
-    for (const metal of metals) {
-        html += `<li>
-        <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
-        </li>`
-    }
+//     // This is how you have been converting objects to <li> elements
+//     for (const metal of metals) {
+//         html += `<li>
+//         <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
+//         </li>`
+//     }
     
-    html += "</ul>"
-    return html
-}
+//     html += "</ul>"
+//     return html
+// }
 
 
 document.addEventListener(
@@ -37,3 +37,28 @@ document.addEventListener(
 //         }
 //     }
 // )
+
+export const Metals = () => {
+    let html = "<ul>"
+    const order = getCustomOrder()
+    // Use .map() for converting objects to <li> elements
+    const listItems = metals.map(metal => {
+        if (order.metalId === undefined) {
+        return `<li>
+            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
+        </li>`
+        } else if (order.metalId === metal.id) {
+            return `<li>
+                <input type="radio" name="metal" value="${metal.id}" checked/> ${metal.metal}
+            </li>`
+        } else {
+            return `<li>
+            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
+        </li>`
+        }
+
+    })
+    html += listItems.join("")
+    html += "</ul>"
+    return html
+}
