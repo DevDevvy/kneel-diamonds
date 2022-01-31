@@ -46,6 +46,10 @@ const database = {
         }
     
 }
+export const getCustomOrder = () => {
+    return {...database.orderBuilder}
+} 
+
 export const getType = () => {
     return database.type.map(type => ({...type}))
 }
