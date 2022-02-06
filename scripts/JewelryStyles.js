@@ -27,7 +27,11 @@ const styles = getStyles()
 // }
 
 
-
+// event listener listening for change of style option
+// add event listener to document, name it as the "change" listener,
+// it takes a parameter for the event, checks if the event target name
+// is equal to he targeted name value in html string, then broadcast
+// the custom event stateChanged to reload the main html
 document.addEventListener(
     "change",
     (event) => {

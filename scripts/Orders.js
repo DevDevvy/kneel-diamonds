@@ -22,7 +22,6 @@ return totalCost
 const buildOrderSizeItem = (order) => {
     // ------find prices and display html
     const sizes = getSizes()
-
 // Remember that the function you pass to find() must return true/false
 const foundSize = sizes.find(
     (size) => {
